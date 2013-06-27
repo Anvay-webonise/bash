@@ -1,0 +1,49 @@
+echo "Hostname is : " > assignment.log
+(hostname && date) >> assignment.log
+echo " " >> assignment.log
+
+echo "Type and Version of Operating System is : " >> assignment.log
+(uname && uname -v && date) >> assignment.log
+echo " " >> assignment.log
+
+echo "Path of Home Directory is : " >> assignment.log
+(echo $HOME && date) >> assignment.log
+echo " " >> assignment.log
+
+echo "Users Logged In : " >> assignment.log
+(who && date) >> assignment.log
+echo " " >> assignment.log
+
+echo "Groups : " >> assignment.log
+(groups && date) >> assignment.log
+echo " " >> assignment.log
+
+echo "Files present in this directory excluding directories : " >> assignment.log
+(find . -type f -exec du -k {} \; && date) >> assignment.log
+echo " " >> assignment.log
+
+echo "Renaming files with extension .txt : " >> assignment.log
+x=1;
+for file in *.txt; 
+	do mv $file file0$x.txt;
+	x=$[$x+1]; 
+done;
+
+(ls *.txt && date) >> assignment.log
+
+echo " " >> assignment.log
+
+echo "Set up file permissions to 777 : "
+chmod 777 readme.txt 
+
+echo "Moving 4 files : " 
+ls | head -4 | xargs -I{} mv {} ./public_html 
+
+echo "Copying public_html folder : "
+sudo cp -r public_html public_html
+
+echo "Renaming public_html : " 
+
+
+
+
